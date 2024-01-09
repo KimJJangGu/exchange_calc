@@ -10,6 +10,8 @@ class ExchangeState with _$ExchangeState {
   const factory ExchangeState({
     @Default(null) ExchangeModel? exchangeModel,
     @Default(false) bool isLoading,
+    @Default('KRW') String sourceUnit,
+    @Default('USD') String destUnit,
   }) = _ExchangeState;
 
   factory ExchangeState.fromJson(Map<String, Object?> json) => _$ExchangeStateFromJson(json);
