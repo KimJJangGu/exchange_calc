@@ -56,15 +56,15 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
       ),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : Center(
+          : (state.exchangeModel == null)
+            ? Center(child: TextButton.icon(onPressed: viewModel.getCurrencyExchange, icon: const Icon(Icons.refresh), label: Text('데이터 오류')),)
+            : Center(
               child: Column(
                 children: [
-                  Text('기준 시간 : ${state.exchangeModel?.lastUpdateTime ?? '알수없음'}'),
+                  Text('기준 시간 : ${state.exchangeModel!.lastUpdateTime}'),
                   TextField(
                     controller: srcController,
-                    onChanged: (value) {
-                      viewModel.selectSourceValue(value);
-                    },
+                    onChanged: viewModel.selectSourceValue,
                     keyboardType: TextInputType.number,
                   ),
                   DropdownButton<String>(
@@ -81,9 +81,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                   ),
                   TextField(
                     controller: destController,
-                    onChanged: (value) {
-                      viewModel.selectDestValue(value);
-                    },
+                    onChanged: viewModel.selectDestValue,
                     keyboardType: TextInputType.number,
                   ),
                   DropdownButton<String>(
