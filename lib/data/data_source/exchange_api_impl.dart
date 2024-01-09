@@ -9,9 +9,13 @@ class ExchangeApiImpl implements ExchangeApi {
   Future<Result<Map<String, dynamic>>> fetchExchangeApi() async {
     try {
       final http.Response response = await http.get(Uri.parse('https://open.er-api.com/v6/latest/KRW'));
-      return jsonDecode(response.body);
+      return Result.success(jsonDecode(response.body));
     } catch (e) {
       return Result.error(e.toString());
     }
   }
+}
+
+void main() async {
+  Result<Map<String, dynamic>> data = await ExchangeApiImpl().fetchExchangeApi();
 }
