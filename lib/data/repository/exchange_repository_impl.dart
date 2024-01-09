@@ -25,8 +25,3 @@ class ExchangeRepositoryImpl implements ExchangeRepository {
     );
   }
 }
-
-void main() async {
-  ExchangeRepository repository = ExchangeRepositoryImpl(exchangeApi: ExchangeApiImpl());
-  await repository.getExchangeData();
-}

@@ -13,7 +13,7 @@ extension ExchangeMapper on ExchangeDto {
   Map<String, num> _toDouble(Map<String, dynamic> data) {
     Map<String, num> newMap = {};
     for (var element in data.entries) {
-      newMap.putIfAbsent(element.key, () => num.parse(element.value));
+      newMap.putIfAbsent(element.key, () => element.value as num);
     }
     return newMap;
   }
