@@ -5,8 +5,8 @@ extension ExchangeMapper on ExchangeDto {
   ExchangeModel toExchangeModel() {
     return ExchangeModel(
       exchangeRates: rates != null ? _toDouble(rates!) : <String, num>{},
-      lastUpdateTime: DateTime.fromMillisecondsSinceEpoch(timeLastUpdateUnix?.toInt() ?? 0),
-      nextUpdateTime: DateTime.fromMillisecondsSinceEpoch(timeLastUpdateUnix?.toInt() ?? 0),
+      lastUpdateTime: DateTime.fromMillisecondsSinceEpoch((timeLastUpdateUnix?.toInt() ?? 0) * 1000),
+      nextUpdateTime: DateTime.fromMillisecondsSinceEpoch((timeNextUpdateUnix?.toInt() ?? 0) * 1000),
     );
   }
 
