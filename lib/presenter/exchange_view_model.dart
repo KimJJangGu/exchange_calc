@@ -65,7 +65,7 @@ class ExchangeViewModel extends ChangeNotifier {
 
   void selectDest(String unit, String value) {
     _state = state.copyWith(destUnit: unit);
-    selectDestValue(value);
+    selectSourceValue(value);
     notifyListeners();
   }
 }

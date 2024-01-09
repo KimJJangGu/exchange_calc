@@ -59,7 +59,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
           : Center(
               child: Column(
                 children: [
-                  Text('갱신 시간 : ${state.exchangeModel?.lastUpdateTime ?? '알수없음'}'),
+                  Text('기준 시간 : ${state.exchangeModel?.lastUpdateTime ?? '알수없음'}'),
                   TextField(
                     controller: srcController,
                     onChanged: (value) {
@@ -77,7 +77,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     },
                   ),
                   const SizedBox(
-                    height: 100,
+                    height: 200,
                   ),
                   TextField(
                     controller: destController,
@@ -91,7 +91,7 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                     items: state.exchangeModel!.exchangeRates.keys.map((e) => DropdownMenuItem<String>(value: e, child: Text(e))).toList(),
                     onChanged: (value) {
                       if (value != null) {
-                        viewModel.selectDest(value, destController.text);
+                        viewModel.selectDest(value, srcController.text);
                       }
                     },
                   ),
