@@ -6,11 +6,11 @@ part 'exchange_state.freezed.dart';
 part 'exchange_state.g.dart';
 
 @freezed
-class ExchagneState with _$ExchangeState {
-  const factory ExchagneState({
-    required ExchangeModel exchangeModel,
+class ExchangeState with ExchangeState {
+  const factory ExchangeState({
+    @Default(null) ExchangeModel? exchangeModel,
     @Default(false) bool isLoading,
-  }) = _ExchagneState;
+  }) = ExchangeState;
 
-  factory ExchagneState.fromJson(Map<String, Object?> json) => _$ExchagneState.FromJson(json);
+  factory ExchangeState.fromJson(Map<String, Object?> json) => _$ExchangeStateFromJson(json);
 }

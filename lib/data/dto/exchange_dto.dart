@@ -9,7 +9,7 @@ class ExchangeDto {
   String? timeNextUpdateUtc;
   num? timeEolUnix;
   String? baseCode;
-  Map<String, num>? rates;
+  Map<String, dynamic>? rates;
 
   ExchangeDto({
     this.result,

@@ -1,5 +1,6 @@
 import 'package:exchange_calc/core/result.dart';
 import 'package:exchange_calc/data/data_source/exchange_api.dart';
+import 'package:exchange_calc/data/data_source/exchange_api_impl.dart';
 import 'package:exchange_calc/data/dto/exchange_dto.dart';
 import 'package:exchange_calc/data/mapper/exchange_mapper.dart';
 import 'package:exchange_calc/domain/model/exchange_model.dart';
@@ -23,4 +24,9 @@ class ExchangeRepositoryImpl implements ExchangeRepository {
       error: (e) => Result.error(e),
     );
   }
+}
+
+void main() async {
+  ExchangeRepository repository = ExchangeRepositoryImpl(exchangeApi: ExchangeApiImpl());
+  await repository.getExchangeData();
 }

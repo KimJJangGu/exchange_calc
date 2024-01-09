@@ -4,9 +4,17 @@ import 'package:exchange_calc/domain/model/exchange_model.dart';
 extension ExchangeMapper on ExchangeDto {
   ExchangeModel toExchangeModel() {
     return ExchangeModel(
-      exchangeRates: rates ?? {},
+      exchangeRates: rates != null ? _toDouble(rates!) : <String, num>{},
       lastUpdateTime: DateTime.fromMillisecondsSinceEpoch(timeLastUpdateUnix?.toInt() ?? 0),
       nextUpdateTime: DateTime.fromMillisecondsSinceEpoch(timeLastUpdateUnix?.toInt() ?? 0),
     );
+  }
+
+  Map<String, num> _toDouble(Map<String, dynamic> data) {
+    Map<String, num> newMap = {};
+    for (var element in data.entries) {
+      newMap.putIfAbsent(element.key, () => num.parse(element.value));
+    }
+    return newMap;
   }
 }
